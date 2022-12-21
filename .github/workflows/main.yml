@@ -7,20 +7,23 @@ jobs:
   build:
     runs-on: macOS-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.0'
-          bundler-cache: true
-      - uses: actions/setup-java@v3
+      - name: Pull Source Code 
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
           java-version: '11'
-      - uses: subosito/flutter-action@v2
-      - run: flutter build appbundle
-      - name: Install fastlane
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+
+      - name: Setup Fastlane
         run: gem install fastlane 
+
+      - name: Build App 
       - run: |
+          flutter build appbundle
           cd ./android
-          pwd
           fastlane beta
