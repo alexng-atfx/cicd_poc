@@ -13,10 +13,11 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
       - uses: subosito/flutter-action@v2.8.0
-      - run: |
-          # flutter build appbundle
-          cd ./android
-
+      - run: cd ./android
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
       - uses: maierj/fastlane-action@v3.0.0
-        with: 
-          lane: beta
+        with:
+          lane: 'beta'
