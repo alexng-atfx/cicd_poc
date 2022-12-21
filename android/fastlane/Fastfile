@@ -23,7 +23,10 @@ platform :android do
 
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
-    gradle(task: "clean assembleRelease")
+    gradle(
+      task: "clean assembleRelease",
+      project_dir: "android/"
+    )
     appcenter_upload(
       api_token: "652a4e70fc754b035746e816b19c8216e7f7196f",
       owner_name: "ATFX-Mobile",
