@@ -12,7 +12,7 @@ jobs:
         with:
           ruby-version: '3.0'
           bundler-cache: true
-      run: |
-        cd ./android
-        fastlane add_plugin appcenter
-        fastlane beta
+      - run: |
+          cd ./android
+          fastlane add_plugin appcenter
+          fastlane beta
