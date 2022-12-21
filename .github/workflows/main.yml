@@ -5,14 +5,14 @@ on:
       - 'main'
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macOS-12
     steps:
       - uses: actions/checkout@v3
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.0'
           bundler-cache: true
-      - uses: maierj/fastlane-action@v3.0.0
-        with:
-          lane: 'beta'
-          subdirectory: 'android'
+      runs: |
+        cd ./android
+        fastlane add_plugin appcenter
+        fastlane beta
