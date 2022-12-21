@@ -21,7 +21,7 @@ jobs:
 
       - name: Setup Fastlane
         run: |
-          gem install bundler
+          bundle update --bundler
           gem install fastlane 
 
       - name: Build App 
