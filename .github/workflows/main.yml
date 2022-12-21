@@ -16,4 +16,5 @@ jobs:
         run: gem install fastlane 
       - run: |
           cd ./android
+          pwd
           fastlane beta
