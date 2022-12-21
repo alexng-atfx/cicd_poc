@@ -12,8 +12,8 @@ jobs:
         with:
           ruby-version: '3.0'
           bundler-cache: true
+      - name: Install fastlane
+        run: gem install fastlane 
       - run: |
           cd ./android
-          gem install fastlane
-          fastlane add_plugin appcenter
           fastlane beta
