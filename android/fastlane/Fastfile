@@ -13,31 +13,28 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
+AC_API_TOKEN = "652a4e70fc754b035746e816b19c8216e7f7196f"
+AC_OWNER_NAME = "ATFX-Mobile"
+AC_OWNER_TYPE = "organization"
+AC_APP_NAME = "Test-Android"
+APK_PATH = "../build/app/outputs/apk/release/app-release.apk"
+
 default_platform(:android)
-
-platform :android do
-  desc "Runs all the tests"
-  lane :test do
-    gradle(task: "test")
-  end
-
-  desc "Submit a new Beta Build to Crashlytics Beta"
+  desc "Create Build and Upload to AppCenter"
   lane :beta do
     gradle(task: "clean assembleRelease")
     appcenter_upload(
-      api_token: "652a4e70fc754b035746e816b19c8216e7f7196f",
-      owner_name: "ATFX-Mobile",
-      owner_type: "organization", # Default is user - set to organization for appcenter organizations
-      app_name: "Test-Android",
-      file: "../build/app/outputs/apk/release/app-release.apk"
+      api_token: AC_API_TOKEN,
+      owner_name: AC_OWNER_NAME,
+      owner_type: AC_OWNER_TYPE,
+      app_name: AC_APP_NAME,
+      file: APK_PATH
     ) 
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
-  end
 
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
-  end
+    build_information = lane_context[SharedValues::APPCENTER_BUILD_INFORMATION]
+    OS=build_information['app_os']
+    VERSION=build_information['short_version'] + "(" + build_information['version'] + ")"
+    ID=build_information['id']
+    URL=build_information['install_url']
+    sh "../../script/webhook_teams.sh '**#{OS}**' '#{VERSION}' '#{ID}' '[appcenter.ms](#{URL})'"
 end

@@ -26,4 +26,4 @@ jobs:
         run: |
           flutter build appbundle
           cd ./android
-          fastlane beta
+          bundle exec fastlane beta
