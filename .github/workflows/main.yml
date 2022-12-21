@@ -16,6 +16,6 @@ jobs:
       - run: |
           flutter build appbundle
           cd ./android
-          bundle exec fastlane beta
-        env:
-          MATCH_PASSWORD: ${{ secrets.MATCH_PASSWORD }}
+      - uses: maierj/fastlane-action@v3.0.0
+        with: 
+          lane: beta
