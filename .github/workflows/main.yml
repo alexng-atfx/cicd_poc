@@ -23,7 +23,7 @@ jobs:
         run: gem install fastlane 
 
       - name: Build App 
-      - run: |
+        run: |
           flutter build appbundle
           cd ./android
           fastlane beta
