@@ -20,10 +20,12 @@ jobs:
         uses: subosito/flutter-action@v2
 
       - name: Setup Fastlane
-        run: gem install fastlane 
+        run: |
+          gem install bundler
+          gem install fastlane 
 
       - name: Build App 
         run: |
           flutter build appbundle
           cd ./android
-          fastlane beta
+          bundle exec fastlane beta
