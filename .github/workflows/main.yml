@@ -12,6 +12,8 @@ jobs:
         with:
           ruby-version: '3.0'
           bundler-cache: true
+      - uses: subosito/flutter-action@v2
+        run: flutter build appbundle
       - name: Install fastlane
         run: gem install fastlane 
       - run: |
