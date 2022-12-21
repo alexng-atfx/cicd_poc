@@ -12,7 +12,7 @@ jobs:
         with:
           ruby-version: '3.0'
           bundler-cache: true
-      - run: |
-          cd ./android
-          pwd
-          fastlane beta
+      - uses: maierj/fastlane-action@v3.0.0
+        with:
+          lane: 'beta'
+          lane: 'android'
