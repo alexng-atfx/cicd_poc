@@ -16,6 +16,11 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '11'
+      - uses: android-actions/setup-android@v2
+      - uses: flutter-actions/setup-flutter@v2
+        with:
+          channel: stable
+          version: 3.0.2
       - uses: subosito/flutter-action@v2
       - run: flutter build appbundle
       - name: Install fastlane
