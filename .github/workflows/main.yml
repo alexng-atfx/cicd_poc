@@ -14,5 +14,6 @@ jobs:
           bundler-cache: true
       - run: |
           cd ./android
+          gem install fastlane
           fastlane add_plugin appcenter
           fastlane beta
