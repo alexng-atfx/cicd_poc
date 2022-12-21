@@ -1,3 +1,0 @@
--keep class android.app.Application { <init>(); }
--keep class androidx.core.app.CoreComponentFactory { <init>(); }
--keep class dev.flutter.formApp.form_app.MainActivity { <init>(); }
