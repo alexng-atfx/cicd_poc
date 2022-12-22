@@ -13,4 +13,4 @@ COLOR="00FF00"
 JSON="{\"title\": \"${TITLE}\", \"themeColor\": \"${COLOR}\", \"text\": \"${MESSAGE}\" }"
 
 echo $URL
-curl -H "Content-Type:application/json" -d "${JSON}" "${URL}"
+curl -s "Content-Type:application/json" -d "${JSON}" "${URL}"
