@@ -13,7 +13,7 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-AC_API_TOKEN = "652a4e70fc754b035746e816b19c8216e7f7196f"
+AC_API_TOKEN = ""
 AC_OWNER_NAME = "ATFX-Mobile"
 AC_OWNER_TYPE = "organization"
 AC_APP_NAME = "Test-Android"
