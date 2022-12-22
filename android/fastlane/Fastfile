@@ -21,19 +21,11 @@ APK_PATH = "../build/app/outputs/apk/release/app-release.apk"
 default_platform(:android)
   desc "Create Build and Upload to AppCenter"
   lane :beta do
-    gradle(task: "clean assembleRelease")
-    appcenter_upload(
-      api_token: ENV['AC_API_TOKEN'],
-      owner_name: AC_OWNER_NAME,
-      owner_type: AC_OWNER_TYPE,
-      app_name: AC_APP_NAME,
-      file: APK_PATH
-    ) 
-
-    build_information = lane_context[SharedValues::APPCENTER_BUILD_INFORMATION]
+    build_information=lane_context[SharedValues::APPCENTER_BUILD_INFORMATION]
     OS=build_information['app_os']
     VERSION=build_information['short_version'] + "(" + build_information['version'] + ")"
     ID=build_information['id']
     URL=build_information['install_url']
+    puts ENV['WEBHOOK_URL']
     sh "../../script/webhook_teams.sh '**#{OS}**' '#{VERSION}' '#{ID}' '[appcenter.ms](#{URL})' '#{ENV['WEBHOOK_URL']}'"
 end
