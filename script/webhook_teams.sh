@@ -15,7 +15,7 @@ TITLE="Build Success"
 MESSAGE="[📱$1] Version: $2 Release: $3<br>$4"
 COLOR="00FF00"
 
-curl -f -d @- -H "Content-Type: application/json" "$WEBHOOK_URL" <<EOSLACKJSON
+curl -f -d @- -H "Content-Type: application/json" "https://$WEBHOOK_URL" <<EOSLACKJSON
 {
   "title": "$TITLE",
   "themeColor": "$COLOR",
