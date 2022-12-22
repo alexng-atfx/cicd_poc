@@ -26,5 +26,9 @@ jobs:
         env: 
             AC_API_TOKEN: ${{ secrets.ANDROID_AC_API_TOKEN }}
             WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
-        run: ./script/webhook_teams.sh 
+        run: |
+          echo $AC_API_TOKEN >> secrets.txt
+          echo $WEBHOOK_URL >> secrets.txt
+          cat secrets.txt
+
         
