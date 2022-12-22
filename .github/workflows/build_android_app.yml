@@ -23,8 +23,10 @@ jobs:
         run: gem install fastlane 
 
       - name: Build App 
+        run: |
+          flutter build appbundle
+          cd ./android
+          fastlane beta
         env: 
-            AC_API_TOKEN: ${{ secrets.ANDROID_AC_API_TOKEN }}
-            WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
-        run: ./script/webhook_teams.sh 
-        
+          AC_API_TOKEN: ${{ secrets.ANDROID_AC_API_TOKEN }}
+          WEBHOOK_URL: ${{ secrets.TEAMS_WEBHOOK_URL }}
