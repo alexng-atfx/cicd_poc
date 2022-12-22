@@ -23,7 +23,7 @@ default_platform(:android)
   lane :beta do
     gradle(task: "clean assembleRelease")
     appcenter_upload(
-      api_token: AC_API_TOKEN,
+      api_token: ENV['AC_API_TOKEN'],
       owner_name: AC_OWNER_NAME,
       owner_type: AC_OWNER_TYPE,
       app_name: AC_APP_NAME,
