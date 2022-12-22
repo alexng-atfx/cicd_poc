@@ -12,5 +12,5 @@ MESSAGE="[📱$1] Version: $2 Release: $3<br>$4"
 COLOR="00FF00"
 JSON="{\"title\": \"${TITLE}\", \"themeColor\": \"${COLOR}\", \"text\": \"${MESSAGE}\" }"
 
-echo URL
+echo $URL
 curl -H "Content-Type:application/json" -d "${JSON}" "${URL}"
