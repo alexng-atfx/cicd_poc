@@ -35,5 +35,5 @@ default_platform(:android)
     VERSION=build_information['short_version'] + "(" + build_information['version'] + ")"
     ID=build_information['id']
     URL=build_information['install_url']
-    sh "../../script/webhook_teams.sh '**#{OS}**' '#{VERSION}' '#{ID}' '[appcenter.ms](#{URL})'"
+    sh "../../script/webhook_teams.sh '**#{OS}**' '#{VERSION}' '#{ID}' '[appcenter.ms](#{URL})' '#{ENV['AC_API_TOKEN']}'"
 end
